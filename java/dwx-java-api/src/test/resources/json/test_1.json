@@ -1,0 +1,45 @@
+[
+   {
+      "command":"<:SUBSCRIBE_SYMBOLS|EURUSD,GBPUSD:>",
+      "messageFile": {
+      		"52566418_CORRELATION_ID": {
+      			"type": "INFO", 
+      			"time": "2022.10.13 21:31:46", 
+      			"message": "Successfully subscribed to: EURUSD, GBPUSD"
+      			}
+      		},	
+      "respFileType":"MARKET_DATA",
+      "respFileList":[
+         {
+            "delay":200,
+            "respContent":{
+               "EURUSD":{
+                  "bid":1.09874,
+                  "ask":1.09876,
+                  "tick_value":10
+               }
+            }
+         },
+         {
+            "delay":200,
+            "respContent":{
+               "EURUSD":{
+                  "bid":1.09874,
+                  "ask":1.09876,
+                  "tick_value":10
+               }
+            }
+         },
+         {
+            "delay":200,
+            "respContent":{
+               "EURUSD":{
+                  "bid":1.09876,
+                  "ask":1.09878,
+                  "tick_value":10
+               }
+            }
+         }
+      ]
+   }
+]

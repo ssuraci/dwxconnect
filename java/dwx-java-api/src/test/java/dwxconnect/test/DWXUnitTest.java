@@ -1,15 +1,17 @@
-import org.json.JSONArray;
-import org.json.JSONObject;
+package dwxconnect.test;
+
+import static dwxconnect.api.Helpers.sleep;
+
 import java.util.ArrayList;
 import java.util.Arrays;
+
+import org.json.JSONObject;
 import org.junit.Assert;
-import org.junit.Test;
 import org.junit.Before;
+import org.junit.Ignore;
+import org.junit.Test;
 
-import api.Client;
-import api.EventHandler;
-
-import static api.Helpers.*;
+import dwxconnect.api.Client;
 
 
 
@@ -32,7 +34,7 @@ JSON jar from here:
 https://github.com/junit-team/junit4/wiki/Download-and-Install
 
 */
-
+@Ignore
 public class DWXUnitTest {
 	
 	final static String MetaTraderDirPath = "C:/Users/asd/AppData/Roaming/MetaQuotes/Terminal/3B534B10135CFEDF8CD1AAB8BD994B13/MQL4/Files/";

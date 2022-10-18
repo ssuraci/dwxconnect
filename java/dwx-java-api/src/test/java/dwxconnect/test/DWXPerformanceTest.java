@@ -1,15 +1,13 @@
-import org.json.JSONArray;
+package dwxconnect.test;
+
+import static dwxconnect.api.Helpers.print;
+import static dwxconnect.api.Helpers.sleep;
+
 import org.json.JSONObject;
-import java.util.ArrayList;
-import java.util.Arrays;
-import org.junit.Assert;
-import org.junit.Test;
-import org.junit.Before;
+import org.junit.Ignore;
 
-import api.Client;
-import api.EventHandler;
-
-import static api.Helpers.*;
+import dwxconnect.api.Client;
+import dwxconnect.api.EventHandler;
 
 
 
@@ -36,6 +34,7 @@ https://github.com/junit-team/junit4/wiki/Download-and-Install
 
 */
 
+@Ignore
 public class DWXPerformanceTest {
     
 	final static String MetaTraderDirPath = "C:/Users/asd/AppData/Roaming/MetaQuotes/Terminal/3B534B10135CFEDF8CD1AAB8BD994B13/MQL4/Files/";
@@ -157,5 +156,12 @@ class MyEventHandler implements EventHandler {
             print("closeDuration: " + closeDuration/n + " milliseconds per order");
 		}
     }
+
+
+	@Override
+	public void onHistoricTrades(Client dwx) {
+		// TODO Auto-generated method stub
+		
+	}
 }
 

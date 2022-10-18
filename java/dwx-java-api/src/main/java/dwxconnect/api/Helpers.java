@@ -1,4 +1,4 @@
-package api;
+package dwxconnect.api;
 
 import java.io.File;
 import java.io.FileReader;
@@ -11,6 +11,10 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.TimeZone;
 import java.util.concurrent.ConcurrentHashMap;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.text.SimpleDateFormat;
 import java.text.ParseException;
 
@@ -23,6 +27,8 @@ This class includes helper functions for printing, formatting and file operation
 
 public class Helpers {
     
+	private static Logger logger = LoggerFactory.getLogger(Helpers.class);
+	
 	/*Prints to console output. 
 	
 	Args:
@@ -44,6 +50,7 @@ public class Helpers {
         try {
             Thread.sleep(millis);
         } catch (Exception e) {
+        	logger.error("Sleep error: " + e.getMessage());
         }
     }
 	
@@ -58,7 +65,6 @@ public class Helpers {
         
         final File f = new File(filePath);
         if(!f.exists()) {
-            // print("ERROR: file does not exist: " + filePath);
             return "";
         }
         
@@ -66,7 +72,7 @@ public class Helpers {
             Path path = Paths.get(filePath);
             return Files.readString(path);  // , StandardCharsets.US_ASCII
         } catch (Exception e) {
-			// e.printStackTrace();
+        	logger.error("Error reading file: " + filePath + " : " + e.getMessage());
             return "";
 		}
     }
@@ -84,7 +90,7 @@ public class Helpers {
             Files.write(Paths.get(filePath), text.getBytes());
             return true;
         } catch (Exception e) {
-            // e.printStackTrace();
+        	logger.error("Error writing file: " + filePath + " : " + e.getMessage());
             return false;
         }
     }
@@ -101,7 +107,7 @@ public class Helpers {
             Files.deleteIfExists(Paths.get(filePath));
             return true;
         } catch (Exception e) {
-            // e.printStackTrace();
+        	logger.error("Error deleting file: " + filePath + " : " + e.getMessage());
             return false;
         }
     }

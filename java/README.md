@@ -1,32 +1,28 @@
-# DWX_Connect - a simple multi-language MT4 connector
+# DWX_Connect - Introduction
 
 DWX_Connect provides functions to subscribe to tick and bar data, as well as to trade on MT4 or MT5 via python, java and C#. Its simple file-based communication also provides an easy starting point for implementations in other programming languages.
 
+# Java Refactoring
 
-## First steps für java
+In comparison to original DWX Connect Java implementation (available [here](https://github.com/darwinex/dwxconnect/tree/main/java)), I implemented the following features/improvements:
 
-1. Download the code from the DWX_Connect GitHub repository.
+1. ported project to a maven multimodule build system
+2. implemented logging with slf4j / logback
+3. implemented start/stop methods for DwxClient
+4. unified file polling in DwxClient, reducing code duplication
+5. code improvements and fixes for some possible race conditions
+6. added a `correlationId` for each command / response message that can be used to implement request/response semantics (for this I had to modify mql5 file as well, anyway I kept it backward compatibile)
+7. implemented a very simple "MetaTrader Simulator" that can be used to run unit tests without the need of "real" MetaTrader (which can be dangerous)
 
-1. Copy the server EA (DWX_Server_MT4.mq4 or DWX_Server_MT5.mq5) into the /MQL4/Experts or /MQL5/Experts directory (File -> Open Data Folder).
+# Building
 
-1. Double click on the MT4/MT5 EA file to open it in MetaEditor. Press F7 to compile the file. Restart MT4/MT5 or rightclick -> Refresh in the Navigator window.
+To build the library and sample client:
 
-1. Attach the EA to any chart. Change the input parameters if needed, for example, MaximumOrders and MaximumLotSize if you want to trade larger sizes.
+`mvn clean package`
 
-1. If java is not installed, download and install the Java Development Kit (JDK). Make sure that it is added to the system path variable. 
+To run sample client:
 
-1. Copy the content of the DWX_Connect java directory into your working directory. You can use DWXExampleClient.java as a starting point for your own algorithm. 
+`cd dwx-sample-client/target`
 
-1. Compile the files with:
+`java -jar sample-client-0.1.0.jar path-to-mt5-dir`
 
-    ```console
-    javac -cp ".;libs/*" "@sources.txt"
-    ```
-
-1. The example application will try to subscribe to EURUSD and GBPUSD (as well as some bar data) and print some information on every new tick or bar. Run the application with:
-
-    ```console
-    java -cp ".;libs/*" DWXExampleClient
-    ```
- 1. If you modify the file name DWXExampleClient.java, also be sure to change the class name inside the file as well as the name in sources.txt. 
- 
