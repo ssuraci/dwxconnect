@@ -28,6 +28,9 @@ To run sample client:
 
 # Future Work
 - more tests
-- Spring Boot integration 
-- Kafka/RabbitMQ integration
-- performance improvements
+- Spring Boot sample application 
+- containerized application that exposes REST / Kafka / RabbitMQ endpoints
+- code optimization, performance improvements
+- file based messaging improvement
+- better error handling
+- align other languages implementation (C#, Python)
